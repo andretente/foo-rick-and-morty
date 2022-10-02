@@ -1,0 +1,9 @@
+.characters__controls {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #9d1d2a;
+  padding-bottom: 15px;
+}

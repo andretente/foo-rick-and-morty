@@ -1,0 +1,35 @@
+.search-bar {
+  display: inline-block;
+  width: auto;
+}
+
+.search-bar__label {
+  color: #fff;
+  margin-right: 10px;
+}
+
+.search-bar__input {
+  border: none;
+  border-radius: 4px;
+  height: 32px;
+  font-size: 1.05rem;
+}
+
+.search-bar__input:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.search-bar__button {
+  background: #9d1d2a;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.search-bar__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}

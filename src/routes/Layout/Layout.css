@@ -1,0 +1,31 @@
+.layout__navigation {
+  position: absolute;
+  top: 0;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.layout__navigation-link {
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.layout__navigation-link:hover {
+  color: #fff;
+}
+
+.layout__navigation-link:focus-visible {
+  outline: 2px solid #fff;
+}
+
+.layout__navigation-link:last-child {
+  margin-right: 0;
+}
+
+.layout__main {
+  display: grid;
+  margin-top: 44px;
+  height: 100%;
+}
