@@ -39,7 +39,7 @@ export default memo(function SearchBar({
     >
       <div className="search-bar">
         <label>
-          {!onSubmit && <span className="search-bar__label">Search</span>}
+          <span className="search-bar__label">Search:</span>
 
           <input
             // ref={inputRef}
@@ -51,7 +51,7 @@ export default memo(function SearchBar({
         </label>
 
         <button className="search-bar__button" type="submit">
-          Search
+          Go!
         </button>
       </div>
     </form>

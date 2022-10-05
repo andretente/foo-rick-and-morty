@@ -5,7 +5,7 @@ import { episodesStore } from '../../store'
 export default async function episodesLoader() {
   const storeepisodes = episodesStore.get()
 
-  if (storeepisodes?.results.length) {
+  if (storeepisodes?.results?.length) {
     return json(storeepisodes)
   } else {
     const episodes = await fetch('https://rickandmortyapi.com/api/episode')

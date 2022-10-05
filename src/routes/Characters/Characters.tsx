@@ -37,6 +37,7 @@ export default function Characters() {
   return (
     <>
       <div className="characters__controls">
+        {/* ! useRef inside SearchBar */}
         <SearchBar
           className="characters__search-bar"
           onChange={updateSearchValue}
@@ -51,6 +52,7 @@ export default function Characters() {
         />
       </div>
 
+      {/* ! useRef inside CardGrid */}
       <CardGrid>
         {filteredCharacters.map((character, index) => {
           return (
@@ -58,7 +60,7 @@ export default function Characters() {
               key={character.id}
               imageSrc={character.image}
               name={character.name}
-              style={{ animationDelay: `${index * 0.05}s` }}
+              style={{ animationDelay: `${index * 0.05 + 0.2}s` }}
               to={`/characters/${character.id}`}
             />
           )

@@ -1,10 +1,16 @@
 .character__card {
-  border-radius: 4px;
-  width: fit-content;
-  padding: 20px 40px;
-  box-shadow: 5px 6px 5px 3px rgb(56 54 54 / 10%);
   background-color: #222322;
+  border: 1px solid #242524;
+  border-radius: 4px;
+  box-shadow: 5px 6px 5px 3px rgb(56 54 54 / 10%);
+  height: fit-content;
   margin: 0 auto;
+  padding: var(--spacing-v-6) var(--spacing-h-8);
+  width: fit-content;
+}
+
+.character__title {
+  margin: var(--spacing-v-4) var(--spacing-h-4);
 }
 
 .character__image {
@@ -12,7 +18,10 @@
   width: auto;
 }
 
-.character__details {
+.character__details-list {
   display: flex;
   flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: var(--spacing-v-5) 0;
 }

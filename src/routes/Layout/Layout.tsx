@@ -1,56 +1,58 @@
 import './Layout.css'
 
-import { NavLink, Outlet } from 'react-router-dom'
+import classNames from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import BackgroundImage from '../../components/_images/BackgroundImage'
 
 export default function Layout() {
-  const activeStyle = {
-    textDecoration: 'underline',
-  }
+  const location = useLocation()
+
+  const navigationItems = [
+    { to: '/', label: 'Home' },
+    { to: '/characters', label: 'Characters' },
+    { to: '/episodes', label: 'Episodes' },
+  ]
 
   return (
     <>
-      <nav className="layout__navigation">
-        <NavLink
-          className="layout__navigation-link"
-          end
-          to="/"
-          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      <header>
+        <nav
+          className={classNames(
+            'layout__navigation',
+            location.pathname === '/' && 'layout__navigation--is-home'
+          )}
         >
-          Home
-        </NavLink>
+          {navigationItems.map((navigationItem) => {
+            return (
+              <NavLink
+                key={navigationItem.to}
+                className="layout__navigation-link"
+                end
+                to={navigationItem.to}
+              >
+                {navigationItem.label}
 
-        <NavLink
-          className="layout__navigation-link"
-          to="/characters"
-          style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        >
-          Characters
-        </NavLink>
-
-        <NavLink
-          className="layout__navigation-link"
-          to="/episodes"
-          style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        >
-          Episodes
-        </NavLink>
-
-        {/* <NavLink className="layout__navigation-link" to="/slow">
-          Slow
-        </NavLink>
-
-        <NavLink className="layout__navigation-link" to="/slow-deferred">
-          Slow deferred
-        </NavLink> */}
-      </nav>
+                {location.pathname === navigationItem.to ? (
+                  <motion.span
+                    className="layout__navigation-underline"
+                    layoutId="underline"
+                  />
+                ) : null}
+              </NavLink>
+            )
+          })}
+        </nav>
+      </header>
 
       <BackgroundImage />
 
-      <main className="layout__main">
-        <Outlet />
-      </main>
+      <AnimatePresence mode="wait">
+        <motion.main className="layout__main">
+          <Outlet />
+        </motion.main>
+      </AnimatePresence>
     </>
   )
 }

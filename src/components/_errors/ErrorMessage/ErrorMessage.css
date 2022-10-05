@@ -1,5 +1,5 @@
 .error-message {
-  padding: 150px 50px;
+  padding: var(--spacing-v-12) var(--spacing-h-9);
   text-align: center;
 }
 

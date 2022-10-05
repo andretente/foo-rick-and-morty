@@ -1,9 +1,26 @@
 .characters__controls {
+  animation: fade-in 0.1s ease-in 0.2s backwards;
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  height: 32px;
-  margin-bottom: 5px;
-  border-bottom: 1px solid #9d1d2a;
-  padding-bottom: 15px;
+  justify-content: center;
+  margin-top: var(--spacing-v-5);
+  padding: 0 var(--spacing-h-7);
+}
+
+.characters__search-bar {
+  padding: 0 var(--spacing-h-7);
+}
+
+.characters__sort-select {
+  padding: 0 var(--spacing-h-7);
+  border-left: 1px solid #9d1d2a;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

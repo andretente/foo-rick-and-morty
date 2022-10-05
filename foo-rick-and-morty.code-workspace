@@ -67,24 +67,13 @@
     },
 
     "files.exclude": {
-      "**/node_modules": true,
-      "**/public": true,
-      "tsconfig.node.json": true,
-      "tsconfig.json": true,
-      "pnpm-lock.yaml": true,
-      ".prettierrc": true,
-      ".prettierignore": true,
-      ".eslintrc.js": true,
-      ".eslintignore": true,
-      "**/src/vite-env.d.ts": true,
-      "vite.config.ts": true
+      "**/node_modules": true
     },
 
     "search.exclude": {
       "**/node_modules": true,
-      "**/.next": true,
-      "**/.turbo": true,
-      "**/dist": true
+      "**/dist": true,
+      "pnpm-lock.yaml": true
     }
   }
 }
