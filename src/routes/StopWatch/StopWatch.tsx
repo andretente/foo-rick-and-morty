@@ -1,4 +1,4 @@
-import './StopWatch.css'
+import './stop-watch.css'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -19,6 +19,7 @@ export default function StopWatch() {
 
   useEffect(() => {
     ref.current = setInterval(() => {
+      console.log('👷 Tick 👷')
       if (isRunning) setSeconds((state) => state + 1)
     }, 1000)
 

@@ -1,6 +1,5 @@
+import { charactersStore } from '@store/index'
 import { json } from 'react-router-dom'
-
-import { charactersStore } from '../../store'
 
 export default async function charactersLoader() {
   const storeCharacters = charactersStore.get()

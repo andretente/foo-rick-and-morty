@@ -1,10 +1,6 @@
-import { CSSProperties } from 'react'
-
 export interface GenericCardProps {
+  as?: 'div' | 'span'
   className?: string
-  id?: string
   imageSrc?: string
   name?: string
-  style?: CSSProperties
-  to: string
 }

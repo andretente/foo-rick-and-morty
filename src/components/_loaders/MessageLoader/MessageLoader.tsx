@@ -1,9 +1,9 @@
-import './MessageLoader.css'
+import './message-loader.css'
 
 export default function MessageLoader() {
   return (
     <div className="message-loader">
-      <h1 className="message-loader__title">Hold up, I'm working on it</h1>
+      <h1 className="message-loader__title">Hold up, working on it</h1>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"

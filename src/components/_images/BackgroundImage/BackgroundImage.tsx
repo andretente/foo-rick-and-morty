@@ -1,8 +1,7 @@
-import './BackgroundImage.css'
+import './background-image.css'
 
+import bgImage from '@assets/ryck-morty-bg.webp'
 import { useLocation } from 'react-router-dom'
-
-import bgImage from '../../../assets/ryck-morty-bg.webp'
 
 export default function BackgroundImage() {
   const location = useLocation()

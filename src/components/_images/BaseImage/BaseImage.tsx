@@ -1,4 +1,4 @@
-import './BaseImage.css'
+import './base-image.css'
 
 import classNames from 'classnames'
 

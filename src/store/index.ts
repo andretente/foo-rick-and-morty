@@ -1,9 +1,8 @@
-import { atom } from 'nanostores'
-
 import {
   CharactersResponse,
   EpisodesResponse,
-} from '../@types/rick-morty.types'
+} from '@globalTypes/rick-morty.types'
+import { atom } from 'nanostores'
 
 export const charactersStore = atom<CharactersResponse | null>(null)
 

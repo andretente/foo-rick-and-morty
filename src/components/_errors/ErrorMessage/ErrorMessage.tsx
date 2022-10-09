@@ -1,4 +1,4 @@
-import './ErrorMessage.css'
+import './error-message.css'
 
 import type { ErrorMessageProps } from './ErrorMessage.types'
 

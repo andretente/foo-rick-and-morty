@@ -1,7 +1,7 @@
 .layout__navigation {
   align-items: center;
-  backdrop-filter: blur(25px);
   background: rgba(34, 34, 34, 0.93);
+  backdrop-filter: blur(25px);
   display: flex;
   height: 60px;
   left: 0;
@@ -42,16 +42,29 @@
 }
 
 .layout__navigation-underline {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
+  animation: fade-in 0.2s ease-in forwards;
   background: #9d1d2a;
+  bottom: -1px;
+  height: 2px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  transition: all 0.2s;
+  z-index: 1;
 }
 
 .layout__main {
   display: grid;
   margin-top: 60px;
   height: 100%;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

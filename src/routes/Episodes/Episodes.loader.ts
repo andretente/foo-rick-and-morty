@@ -1,6 +1,5 @@
+import { episodesStore } from '@store/index'
 import { json } from 'react-router-dom'
-
-import { episodesStore } from '../../store'
 
 export default async function episodesLoader() {
   const storeepisodes = episodesStore.get()

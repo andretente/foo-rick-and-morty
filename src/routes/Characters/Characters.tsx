@@ -1,13 +1,12 @@
 import './characters.css'
 
-import { ChangeEvent, useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import CardGrid, { CardGridItem } from '@components/_cards/CardGrid'
+import GenericCard from '@components/_cards/GenericCard'
+import { useCallback, useMemo, useState } from 'react'
+import { Link, useLoaderData } from 'react-router-dom'
 
-import CardGrid from '../../components/_cards/CardGrid'
-import GenericCard from '../../components/_cards/GenericCard'
-import SearchBar from '../../components/_inputs/SearchBar'
-import SortSelect from '../../components/_inputs/SortSelect'
 import type { CharactersTypes } from './Characters.types'
+import ControlsBar from './components/ControlsBar'
 
 export default function Characters() {
   const data = useLoaderData() as CharactersTypes // Check this types
@@ -16,19 +15,25 @@ export default function Characters() {
   const [currentSearchValue, setCurrentSearchValue] = useState('')
   const [searchValue, setSearchValue] = useState('')
 
-  // ! useCallbacks
-  const updateSearchValue = (value: string) => {
+  const updateSearchValue = useCallback((value: string) => {
     setCurrentSearchValue(value)
-  }
+  }, [])
 
-  const executeSearch = () => {
+  const executeSearch = useCallback(() => {
     setSearchValue(currentSearchValue)
+  }, [currentSearchValue])
+
+  const updateSort = (value: string) => {
+    setSort(value as 'a-z' | 'z-a')
   }
 
-  // ! useMemo
-  const filteredCharacters = data?.results.filter((character) => {
-    return character.name.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  const filteredCharacters = useMemo(
+    () =>
+      data?.results.filter((character) => {
+        return character.name.toLowerCase().includes(searchValue.toLowerCase())
+      }),
+    [data?.results, searchValue]
+  )
 
   sort === 'a-z'
     ? filteredCharacters?.sort((a, b) => a.name.localeCompare(b.name))
@@ -36,33 +41,28 @@ export default function Characters() {
 
   return (
     <>
-      <div className="characters__controls">
-        {/* ! useRef inside SearchBar */}
-        <SearchBar
-          className="characters__search-bar"
-          onChange={updateSearchValue}
-          onSubmit={executeSearch}
-        />
+      <ControlsBar
+        onChangeSearch={updateSearchValue}
+        onSubmitSearch={executeSearch}
+        onChangeSort={updateSort}
+      />
 
-        <SortSelect
-          className="characters__sort-select"
-          onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-            setSort(event.currentTarget.value as 'a-z' | 'z-a')
-          }}
-        />
-      </div>
-
-      {/* ! useRef inside CardGrid */}
-      <CardGrid>
+      <CardGrid as="ul">
         {filteredCharacters.map((character, index) => {
           return (
-            <GenericCard
-              key={character.id}
-              imageSrc={character.image}
-              name={character.name}
-              style={{ animationDelay: `${index * 0.05 + 0.2}s` }}
-              to={`/characters/${character.id}`}
-            />
+            <CardGridItem key={character.id} as="li">
+              <Link
+                className="characters__link"
+                style={{ animationDelay: `${index * 0.05 + 0.2}s` }}
+                to={`/characters/${character.id}`}
+              >
+                <GenericCard
+                  as="span"
+                  imageSrc={character.image}
+                  name={character.name}
+                />
+              </Link>
+            </CardGridItem>
           )
         })}
       </CardGrid>

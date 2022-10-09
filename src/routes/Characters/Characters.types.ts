@@ -1,4 +1,4 @@
-import { CharacterTypes, InfoTypes } from '../../@types/rick-morty.types'
+import { CharacterTypes, InfoTypes } from '@globalTypes/rick-morty.types'
 
 export interface CharactersProps {}
 

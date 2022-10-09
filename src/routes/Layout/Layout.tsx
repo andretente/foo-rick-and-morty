@@ -1,7 +1,7 @@
-import './Layout.css'
+import './layout.css'
 
 import classNames from 'classnames'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useLayoutEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import BackgroundImage from '../../components/_images/BackgroundImage'
@@ -15,14 +15,29 @@ export default function Layout() {
     { to: '/episodes', label: 'Episodes' },
   ]
 
+  const navRef = useRef<HTMLElement>(null)
+  const underlineRef = useRef<HTMLSpanElement>(null)
+
+  useLayoutEffect(() => {
+    const activeElement = navRef.current?.querySelector('.active')
+    const dimensions = activeElement?.getBoundingClientRect()
+
+    if (underlineRef.current && dimensions) {
+      underlineRef.current.style.left = `${dimensions?.left}px`
+      underlineRef.current.style.top = `${dimensions?.bottom}px`
+      underlineRef.current.style.width = `${dimensions?.width}px`
+    }
+  }, [location.pathname])
+
   return (
     <>
-      <header>
+      <header style={{ position: 'relative' }}>
         <nav
           className={classNames(
             'layout__navigation',
             location.pathname === '/' && 'layout__navigation--is-home'
           )}
+          ref={navRef}
         >
           {navigationItems.map((navigationItem) => {
             return (
@@ -33,26 +48,19 @@ export default function Layout() {
                 to={navigationItem.to}
               >
                 {navigationItem.label}
-
-                {location.pathname === navigationItem.to ? (
-                  <motion.span
-                    className="layout__navigation-underline"
-                    layoutId="underline"
-                  />
-                ) : null}
               </NavLink>
             )
           })}
         </nav>
+
+        <span ref={underlineRef} className="layout__navigation-underline" />
       </header>
 
       <BackgroundImage />
 
-      <AnimatePresence mode="wait">
-        <motion.main className="layout__main">
-          <Outlet />
-        </motion.main>
-      </AnimatePresence>
+      <main className="layout__main">
+        <Outlet />
+      </main>
     </>
   )
 }

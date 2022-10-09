@@ -1,5 +1,5 @@
-import { InfoTypes } from '../../@types/rick-morty.types'
-import { EpisodeTypes } from './../../@types/rick-morty.types'
+import { InfoTypes } from '@globalTypes/rick-morty.types'
+import { EpisodeTypes } from '@globalTypes/rick-morty.types'
 
 export interface EpisodesProps {}
 

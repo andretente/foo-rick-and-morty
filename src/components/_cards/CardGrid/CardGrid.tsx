@@ -1,19 +1,9 @@
-import './CardGrid.css'
+import './card-grid.css'
 
-// import { useEffect, useRef } from 'react'
 import type { CardGridProps } from './CardGrid.types'
 
-export default function CardGrid({ children }: CardGridProps) {
-  // const gridRef = useRef<HTMLDivElement>(null)
+export default function CardGrid({ as = 'div', children }: CardGridProps) {
+  const Component = as
 
-  // useEffect(() => {
-  //   const firstChild = gridRef.current?.firstElementChild
-  //   const firstChildLink = firstChild?.getElementsByTagName('a')[0]
-
-  //   if (firstChildLink) {
-  //     firstChildLink.focus()
-  //   }
-  // }, [])
-
-  return <div className="card-grid">{children}</div>
+  return <Component className="card-grid">{children}</Component>
 }

@@ -6,7 +6,9 @@ import {
 } from 'react-router-dom'
 
 import Characters, { charactersLoader } from './routes/Characters'
-import Character, { characterLoader } from './routes/Characters/Character'
+import Character, {
+  characterLoader,
+} from './routes/Characters/routes/Character'
 import Episodes, { episodesLoader } from './routes/Episodes'
 import Error from './routes/Error'
 import Layout from './routes/Layout'
