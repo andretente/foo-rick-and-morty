@@ -4,6 +4,7 @@ import { FormEvent, memo, useEffect, useRef } from 'react'
 
 import type { SearchFormProps } from './SearchForm.types'
 
+// ! WARNING: This is a very contrived, memo added for demo purposes
 export default memo(function SearchForm({
   className,
   onChange,

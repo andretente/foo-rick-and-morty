@@ -6,7 +6,8 @@ import { Link, useLoaderData } from 'react-router-dom'
 
 import type { EpisodesTypes } from './Episodes.types'
 export default function Episodes() {
-  const data = useLoaderData() as EpisodesTypes // Check this types
+  // Doesn't seem like useLoaderData accepts generics so we have to cast it
+  const data = useLoaderData() as EpisodesTypes
 
   return (
     <CardGrid as="ul">

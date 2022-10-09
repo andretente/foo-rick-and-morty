@@ -9,16 +9,19 @@ import type { CharactersTypes } from './Characters.types'
 import ControlsBar from './components/ControlsBar'
 
 export default function Characters() {
-  const data = useLoaderData() as CharactersTypes // Check this types
+  // Doesn't seem like useLoaderData accepts generics so we have to cast it
+  const data = useLoaderData() as CharactersTypes
 
   const [sort, setSort] = useState<'a-z' | 'z-a'>('a-z')
   const [currentSearchValue, setCurrentSearchValue] = useState('')
   const [searchValue, setSearchValue] = useState('')
 
+  // ! WARNING: This is a very contrived, useCallback added for demo purposes
   const updateSearchValue = useCallback((value: string) => {
     setCurrentSearchValue(value)
   }, [])
 
+  // ! WARNING: This is a very contrived, useCallback added for demo purposes
   const executeSearch = useCallback(() => {
     setSearchValue(currentSearchValue)
   }, [currentSearchValue])
@@ -27,6 +30,7 @@ export default function Characters() {
     setSort(value as 'a-z' | 'z-a')
   }
 
+  // ! WARNING: This is a very contrived, useMemo added for demo purposes
   const filteredCharacters = useMemo(
     () =>
       data?.results.filter((character) => {

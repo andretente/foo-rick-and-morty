@@ -42,7 +42,7 @@
 }
 
 .layout__navigation-underline {
-  animation: fade-in 0.2s ease-in forwards;
+  animation: fade-in 0.5s ease-in forwards; /* Hack! :)*/
   background: #9d1d2a;
   bottom: -1px;
   height: 2px;

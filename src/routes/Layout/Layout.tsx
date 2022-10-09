@@ -1,10 +1,9 @@
 import './layout.css'
 
+import BackgroundImage from '@components/_images/BackgroundImage'
 import classNames from 'classnames'
 import { useLayoutEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-
-import BackgroundImage from '../../components/_images/BackgroundImage'
 
 export default function Layout() {
   const location = useLocation()
@@ -51,9 +50,9 @@ export default function Layout() {
               </NavLink>
             )
           })}
-        </nav>
 
-        <span ref={underlineRef} className="layout__navigation-underline" />
+          <span ref={underlineRef} className="layout__navigation-underline" />
+        </nav>
       </header>
 
       <BackgroundImage />
